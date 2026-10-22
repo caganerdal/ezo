@@ -25,11 +25,10 @@ window.SITE = {
 
   // Mektup: her satır ayrı bir paragraf olur
   mektup: [
-    "Sevgilim,",
-    "İki yıl önce bugün seninle tanıştığımda, her şeyin bu kadar güzel olabileceğini bilmiyordum. Seninle geçen her gün, bir öncekinden biraz daha değerli.",
-    "Birlikte güldüğümüz, bazen tartıştığımız, ama her seferinde birbirimize daha sıkı sarıldığımız bu iki yıl için teşekkür ederim.",
-    "Daha gidecek çok yerimiz, yaşayacak çok anımız var. Hepsini seninle yaşamak istiyorum.",
-    "İyi ki varsın, iyi ki o gün karşıma çıktın.",
+    "Aşkımmmm seninle tanışalı bugün 2 yıl oluyor.",
+    "İyi ki o gün beni görmüşsün iyi ki benimle konuşmuşsun iyi ki Erdem o gün kalemini silgisini unutmuş da seninle tanışmak bana nasip olmuş.",
+    "Seninle bazen tartışsak da seni her şeyden çok seviyorum, o elini hiçbir zaman bırakmayacağım.",
+    "2. tanışma yılımız kutlu olsunnnn❤️❤️❤️",
   ],
 
   // Son bölüm
