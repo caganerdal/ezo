@@ -1,10 +1,10 @@
 # ezo 💌
 
-2. yıl dönümü için hazırlanmış küçük bir site.
+Tanışmamızın 2. yıl dönümü için hazırlanmış küçük bir site.
 
 ## Nasıl kişiselleştirilir?
 
-Tüm yazılar `data.js` dosyasında: isim, tanışma tarihi, anılar, sebepler, mektup.
+Tüm yazılar `data.js` dosyasında: isim, tanışma tarihi, sebepler, mektup.
 
 - **Fotoğraflar:** `foto/` klasörüne `1.jpg`, `2.jpg`, `3.jpg`, `4.jpg` olarak koy
   (ya da `data.js` içindeki dosya adlarını değiştir). Fotoğraf yoksa yerinde boş bir kart görünür.

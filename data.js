@@ -1,7 +1,5 @@
 // ============================================================
 //  Sitedeki tüm yazılar burada. Sadece bu dosyayı düzenlemen yeterli.
-//  Fotoğrafları "foto" klasörüne koy ve dosya adını aşağıya yaz.
-//  Fotoğraf yoksa yerine şirin bir boş kart görünür, site bozulmaz.
 // ============================================================
 
 window.SITE = {
@@ -18,35 +16,12 @@ window.SITE = {
   zarfYazisi: "Sana küçük bir sürprizim var",
 
   // Başlığın altındaki kısa cümle
-  altBaslik: "İki yıl önce bugün, hayatımın en güzel tesadüfü oldun.",
+  altBaslik: "İki yıl önce bugün tanıştık ve sen hayatımın en güzel tesadüfü oldun.",
 
-  // Hikayemiz: istediğin kadar ekleyip çıkarabilirsin
-  anilar: [
-    {
-      tarih: "23 Ekim 2024",
-      baslik: "İlk tanıştığımız gün",
-      yazi: "O gün seni ilk gördüğümde ne olacağını bilmiyordum ama bir şeylerin değişeceğini hissetmiştim.",
-      foto: "foto/1.jpg",
-    },
-    {
-      tarih: "Kasım 2024",
-      baslik: "İlk buluşmamız",
-      yazi: "Heyecandan ne konuştuğumu hatırlamıyorum, sadece senin gülüşünü hatırlıyorum.",
-      foto: "foto/2.jpg",
-    },
-    {
-      tarih: "2025",
-      baslik: "Birlikte ilk yolculuğumuz",
-      yazi: "Yol ne kadar uzun olursa olsun, yanımda sen varken hep kısa geldi.",
-      foto: "foto/3.jpg",
-    },
-    {
-      tarih: "Bugün",
-      baslik: "Tam iki yıl",
-      yazi: "730 gün, sayısız kahkaha, birkaç küslük ve her seferinde daha çok sevmek.",
-      foto: "foto/4.jpg",
-    },
-  ],
+  // Albüm: fotoğrafları "foto" klasörüne 1.jpg, 2.jpg, 3.jpg ... diye sırayla koy.
+  // Buraya en fazla kaç fotoğraf olabileceğini yaz; olmayan numaralar görünmez.
+  fotoSayisi: 60,
+  fotoUzantisi: "jpg",
 
   // "Seni sevmemin sebepleri" kartları
   sebepler: [
@@ -63,10 +38,10 @@ window.SITE = {
   // Mektup: her satır ayrı bir paragraf olur
   mektup: [
     "Sevgilim,",
-    "İki yıl önce bugün hayatıma girdiğinde, her şeyin bu kadar güzel olabileceğini bilmiyordum. Seninle geçen her gün, bir öncekinden biraz daha değerli.",
+    "İki yıl önce bugün seninle tanıştığımda, her şeyin bu kadar güzel olabileceğini bilmiyordum. Seninle geçen her gün, bir öncekinden biraz daha değerli.",
     "Birlikte güldüğümüz, bazen tartıştığımız, ama her seferinde birbirimize daha sıkı sarıldığımız bu iki yıl için teşekkür ederim.",
     "Daha gidecek çok yerimiz, yaşayacak çok anımız var. Hepsini seninle yaşamak istiyorum.",
-    "İyi ki varsın, iyi ki benimlesin.",
+    "İyi ki varsın, iyi ki o gün karşıma çıktın.",
   ],
 
   // Son bölüm

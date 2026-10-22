@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>İki Yılımız</title>
+  <title>Tanışmamızın 2. Yılı</title>
   <meta name="theme-color" content="#2a1418">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,14 +27,14 @@
 
   <main>
     <section class="hero">
-      <p class="ust-yazi">2. yılımız kutlu olsun</p>
+      <p class="ust-yazi">tanışmamızın 2. yılı</p>
       <h1 data-alan="isim"></h1>
       <p class="alt-baslik" data-alan="altBaslik"></p>
       <a class="asagi" href="#sayac" aria-label="Aşağı kaydır">↓</a>
     </section>
 
     <section id="sayac" class="bolum sayac-bolum">
-      <h2>Birlikteyiz</h2>
+      <h2>Tanışalı</h2>
       <div class="sayac">
         <div><span id="s-yil">0</span><small>yıl</small></div>
         <div><span id="s-gun">0</span><small>gün</small></div>
@@ -42,12 +42,12 @@
         <div><span id="s-dk">0</span><small>dakika</small></div>
         <div><span id="s-sn">0</span><small>saniye</small></div>
       </div>
-      <p class="sayac-not">Toplam <strong id="s-toplam">0</strong> gün ve hâlâ sayıyorum.</p>
+      <p class="sayac-not">Tam <strong id="s-toplam">0</strong> gün oldu ve hâlâ sayıyorum.</p>
     </section>
 
-    <section class="bolum">
-      <h2>Hikayemiz</h2>
-      <ol id="anilar" class="zaman-cizelgesi"></ol>
+    <section id="album-bolum" class="bolum album-bolum">
+      <h2>Albümümüz</h2>
+      <div id="album" class="album"></div>
     </section>
 
     <section class="bolum">
@@ -69,6 +69,13 @@
       <button id="kalp-dugme" class="kalp-dugme" type="button">Bana bir kalp gönder ❤</button>
     </section>
   </main>
+
+  <div id="buyut" class="buyut" hidden>
+    <button class="buyut-kapat" type="button" aria-label="Kapat">×</button>
+    <button class="buyut-ok buyut-onceki" type="button" aria-label="Önceki">‹</button>
+    <img alt="">
+    <button class="buyut-ok buyut-sonraki" type="button" aria-label="Sonraki">›</button>
+  </div>
 
   <button id="muzik-dugme" class="muzik-dugme" type="button" aria-label="Müziği aç/kapat" hidden>♪</button>
   <audio id="muzik" loop preload="auto"></audio>
