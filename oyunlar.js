@@ -356,9 +356,7 @@
   // ---------- Hafıza ----------
   function hafiza(sahne, api) {
     const yedek = ["❤️", "🌹", "💌", "🍓", "🌙", "⭐", "🧸", "☕"];
-    const fotolar = [...document.querySelectorAll("#album img")]
-      .filter((img) => img.complete && img.naturalWidth)
-      .map((img) => img.src)
+    const fotolar = [...(window.FOTOLAR || [])]
       .sort(() => Math.random() - 0.5)
       .slice(0, 8);
     const resimler = [...fotolar, ...yedek.slice(0, 8 - fotolar.length)];

@@ -18,6 +18,11 @@ window.SITE = {
   // Başlığın altındaki kısa cümle
   altBaslik: "İki yıl önce bugün tanıştık ve sen hayatımın en güzel tesadüfü oldun.",
 
+  // Albümde aynı anda kaç fotoğraf görünsün. Daha fazlasını yüklersen kareler
+  // birkaç saniyede bir sıradaki fotoğrafa geçer, böylece hepsi sırayla görünür.
+  albumdeGorunen: 12,
+  degisimSaniyesi: 3,
+
   // "Seni sevmemin sebepleri" kartları
   sebepler: [
     "Gülünce gözlerinin de gülmesi",

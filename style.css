@@ -245,27 +245,42 @@ h2 {
 
 /* ---------- Albüm ---------- */
 .album {
-  columns: 2;
-  column-gap: 14px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px 14px;
 }
 
-@media (min-width: 640px) { .album { columns: 3; column-gap: 20px; } }
+@media (min-width: 640px) { .album { grid-template-columns: repeat(3, 1fr); gap: 24px 20px; } }
 
 .foto {
   display: block;
   width: 100%;
-  margin: 0 0 14px;
   padding: 7px 7px 22px;
   border: 0;
   border-radius: 3px;
   background: var(--kagit);
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-  break-inside: avoid;
   cursor: zoom-in;
   -webkit-tap-highlight-color: transparent;
 }
 .foto.gorundu { transform: rotate(var(--aci, 0deg)); }
-.foto img { display: block; width: 100%; height: auto; }
+.foto-cerceve {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f6d5d9, #eac0b4);
+}
+.foto-cerceve img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 0.9s ease;
+}
+.foto-cerceve img.aktif { opacity: 1; }
 
 .buyut {
   position: fixed;
