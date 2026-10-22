@@ -6,7 +6,7 @@
 
 window.SITE = {
   // Sevgilinin adı (başlıkta görünür)
-  isim: "Ezo",
+  isim: "Ezgi",
 
   // Senin adın (mektubun altına imza olarak yazılır)
   imza: "Seni çok seven ben",
