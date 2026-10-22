@@ -7,7 +7,11 @@
   document.querySelectorAll("[data-alan]").forEach((el) => {
     el.textContent = S[el.dataset.alan] || "";
   });
-  document.title = `${S.isim} · Tanışmamızın 2. yılı`;
+  document.title = `${S.isim}&${S.seninIsmin}`;
+  const baslik = $(".hero h1");
+  baslik.innerHTML = `<span></span><span class="ve">&amp;</span><span></span>`;
+  baslik.firstChild.textContent = S.isim;
+  baslik.lastChild.textContent = S.seninIsmin;
 
   // ---------- Albüm ----------
   // Liste foto/liste.js'ten gelir (GitHub Action yükleme sonrası otomatik yazar).
