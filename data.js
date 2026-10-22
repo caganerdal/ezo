@@ -23,18 +23,6 @@ window.SITE = {
   albumdeGorunen: 12,
   degisimSaniyesi: 3,
 
-  // "Seni sevmemin sebepleri" kartları
-  sebepler: [
-    "Gülünce gözlerinin de gülmesi",
-    "Kötü günümde ne diyeceğini hep bilmen",
-    "Benimle birlikte saçmalayabilmen",
-    "Bana kendimi evimde gibi hissettirmen",
-    "Küçük şeyleri bile hatırlaman",
-    "Sesin, en çok da gece telefonda",
-    "Bana inanman, ben inanmadığımda bile",
-    "Sadece sen olman",
-  ],
-
   // Mektup: her satır ayrı bir paragraf olur
   mektup: [
     "Sevgilim,",

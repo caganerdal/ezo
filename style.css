@@ -327,25 +327,7 @@ h2 {
 .buyut-onceki { left: 10px; }
 .buyut-sonraki { right: 10px; }
 
-/* ---------- Sebepler ---------- */
-.sebepler {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 12px;
-}
-
-.kart {
-  perspective: 800px;
-  aspect-ratio: 1;
-  border: 0;
-  padding: 0;
-  background: none;
-  cursor: pointer;
-  font: inherit;
-  color: inherit;
-  -webkit-tap-highlight-color: transparent;
-}
-
+/* ---------- Dönen kartlar (Hafıza oyunu) ---------- */
 .kart-ic {
   position: relative;
   width: 100%;
@@ -353,7 +335,6 @@ h2 {
   transform-style: preserve-3d;
   transition: transform 0.6s cubic-bezier(0.3, 1.4, 0.5, 1);
 }
-.kart.dondu .kart-ic { transform: rotateY(180deg); }
 
 .kart-yuz {
   position: absolute;
