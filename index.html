@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>İki Yılımız</title>
+  <meta name="theme-color" content="#2a1418">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>❤️</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="kilitli">
+
+  <!-- Açılış zarfı -->
+  <div id="zarf" class="zarf" role="button" tabindex="0" aria-label="Zarfı aç">
+    <div class="zarf-govde">
+      <div class="zarf-kapak"></div>
+      <div class="zarf-muhur">❤</div>
+    </div>
+    <p class="zarf-yazi" data-alan="zarfYazisi"></p>
+    <p class="zarf-ipucu">açmak için dokun</p>
+  </div>
+
+  <canvas id="kalpler" aria-hidden="true"></canvas>
+
+  <main>
+    <section class="hero">
+      <p class="ust-yazi">2. yılımız kutlu olsun</p>
+      <h1 data-alan="isim"></h1>
+      <p class="alt-baslik" data-alan="altBaslik"></p>
+      <a class="asagi" href="#sayac" aria-label="Aşağı kaydır">↓</a>
+    </section>
+
+    <section id="sayac" class="bolum sayac-bolum">
+      <h2>Birlikteyiz</h2>
+      <div class="sayac">
+        <div><span id="s-yil">0</span><small>yıl</small></div>
+        <div><span id="s-gun">0</span><small>gün</small></div>
+        <div><span id="s-saat">0</span><small>saat</small></div>
+        <div><span id="s-dk">0</span><small>dakika</small></div>
+        <div><span id="s-sn">0</span><small>saniye</small></div>
+      </div>
+      <p class="sayac-not">Toplam <strong id="s-toplam">0</strong> gün ve hâlâ sayıyorum.</p>
+    </section>
+
+    <section class="bolum">
+      <h2>Hikayemiz</h2>
+      <ol id="anilar" class="zaman-cizelgesi"></ol>
+    </section>
+
+    <section class="bolum">
+      <h2>Seni sevmemin sebepleri</h2>
+      <p class="aciklama">Kartlara dokun</p>
+      <div id="sebepler" class="sebepler"></div>
+    </section>
+
+    <section class="bolum">
+      <h2>Sana bir mektup</h2>
+      <article class="mektup">
+        <div id="mektup"></div>
+        <p class="imza" data-alan="imza"></p>
+      </article>
+    </section>
+
+    <section class="bolum final">
+      <p class="final-yazi" data-alan="final"></p>
+      <button id="kalp-dugme" class="kalp-dugme" type="button">Bana bir kalp gönder ❤</button>
+    </section>
+  </main>
+
+  <button id="muzik-dugme" class="muzik-dugme" type="button" aria-label="Müziği aç/kapat" hidden>♪</button>
+  <audio id="muzik" loop preload="auto"></audio>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
