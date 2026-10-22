@@ -10,43 +10,90 @@
   document.title = `${S.isim} · Tanışmamızın 2. yılı`;
 
   // ---------- Albüm ----------
-  // foto/1.jpg, foto/2.jpg ... sırayla denenir; olmayanlar sessizce çıkarılır.
+  // Liste foto/liste.js'ten gelir (GitHub Action yükleme sonrası otomatik yazar).
+  // Albümde aynı anda S.albumdeGorunen kare var; daha fazla fotoğraf varsa
+  // kareler birkaç saniyede bir sıradaki fotoğrafa geçer.
   const album = $("#album");
-  let bekleyen = S.fotoSayisi;
-  let yuklenen = 0;
-  function fotoBitti(basarili) {
-    if (basarili) yuklenen++;
-    if (--bekleyen === 0 && yuklenen === 0) $("#album-bolum").hidden = true;
+  const fotoListesi = window.FOTOLAR || [];
+  const bozuk = new Set();
+  const kareSayisi = Math.min(S.albumdeGorunen || 12, fotoListesi.length);
+  let siradakiFoto = 0;
+
+  function sonrakiFoto() {
+    for (let k = 0; k < fotoListesi.length; k++) {
+      const i = siradakiFoto++ % fotoListesi.length;
+      if (!bozuk.has(i)) return i;
+    }
+    return -1;
   }
-  for (let i = 1; i <= S.fotoSayisi; i++) {
-    const kart = document.createElement("button");
-    kart.type = "button";
-    kart.className = "foto gorun";
-    kart.style.setProperty("--aci", `${((i * 37) % 7) - 3}deg`);
+
+  function fotoKoy(kare, i) {
+    const cerceve = kare.firstChild;
     const img = new Image();
-    img.alt = `Fotoğraf ${i}`;
+    img.alt = "";
     img.decoding = "async";
-    img.onload = () => fotoBitti(true);
-    img.onerror = () => { kart.remove(); fotoBitti(false); };
-    img.src = `foto/${i}.${S.fotoUzantisi}`;
-    kart.appendChild(img);
-    kart.addEventListener("click", () => buyut(img));
-    album.appendChild(kart);
+    img.onload = () => {
+      const eskiler = [...cerceve.querySelectorAll("img")];
+      cerceve.appendChild(img);
+      void img.offsetWidth;
+      img.classList.add("aktif");
+      kare.dataset.foto = i;
+      setTimeout(() => eskiler.forEach((e) => e.remove()), 1000);
+    };
+    img.onerror = () => {
+      bozuk.add(i);
+      const yeni = sonrakiFoto();
+      if (yeni >= 0) fotoKoy(kare, yeni);
+      else $("#album-bolum").hidden = true;
+    };
+    img.src = fotoListesi[i];
+  }
+
+  if (!kareSayisi) $("#album-bolum").hidden = true;
+  for (let k = 0; k < kareSayisi; k++) {
+    const kare = document.createElement("button");
+    kare.type = "button";
+    kare.className = "foto gorun";
+    kare.setAttribute("aria-label", "Fotoğrafı büyüt");
+    kare.style.setProperty("--aci", `${(((k + 1) * 37) % 7) - 3}deg`);
+    kare.innerHTML = `<span class="foto-cerceve"></span>`;
+    kare.addEventListener("click", () => { if (kare.dataset.foto) buyut(+kare.dataset.foto); });
+    album.appendChild(kare);
+    fotoKoy(kare, sonrakiFoto());
+  }
+
+  if (fotoListesi.length > kareSayisi) {
+    // Kareler karışık ama sabit bir sırayla değişir, böylece hepsi eşit sıra alır.
+    const kareSirasi = [...Array(kareSayisi).keys()].sort(() => Math.random() - 0.5);
+    let tur = 0;
+    let albumGorunur = false;
+    new IntersectionObserver(([g]) => { albumGorunur = g.isIntersecting; }).observe(album);
+    setInterval(() => {
+      if (!albumGorunur || document.hidden || !buyutKutu.hidden) return;
+      const kareler = album.querySelectorAll(".foto");
+      const i = sonrakiFoto();
+      if (i < 0 || !kareler.length) return;
+      fotoKoy(kareler[kareSirasi[tur++ % kareSirasi.length] % kareler.length], i);
+    }, (S.degisimSaniyesi || 3) * 1000);
   }
 
   // ---------- Fotoğraf büyütme ----------
   const buyutKutu = $("#buyut");
   const buyutImg = buyutKutu.querySelector("img");
   let siradaki = 0;
-  const fotolar = () => [...album.querySelectorAll("img")];
 
-  function goster(n) {
-    const liste = fotolar();
-    siradaki = (n + liste.length) % liste.length;
-    buyutImg.src = liste[siradaki].src;
+  function goster(i) {
+    siradaki = i;
+    buyutImg.src = fotoListesi[i];
   }
-  function buyut(img) {
-    goster(fotolar().indexOf(img));
+  function adim(yon) {
+    const L = fotoListesi.length;
+    let i = siradaki;
+    do { i = (i + yon + L) % L; } while (bozuk.has(i) && i !== siradaki);
+    goster(i);
+  }
+  function buyut(i) {
+    goster(i);
     buyutKutu.hidden = false;
     document.body.classList.add("kilitli");
   }
@@ -55,21 +102,21 @@
     document.body.classList.remove("kilitli");
   }
   buyutKutu.querySelector(".buyut-kapat").addEventListener("click", kapat);
-  buyutKutu.querySelector(".buyut-onceki").addEventListener("click", () => goster(siradaki - 1));
-  buyutKutu.querySelector(".buyut-sonraki").addEventListener("click", () => goster(siradaki + 1));
+  buyutKutu.querySelector(".buyut-onceki").addEventListener("click", () => adim(-1));
+  buyutKutu.querySelector(".buyut-sonraki").addEventListener("click", () => adim(1));
   buyutKutu.addEventListener("click", (e) => { if (e.target === buyutKutu) kapat(); });
   addEventListener("keydown", (e) => {
     if (buyutKutu.hidden) return;
     if (e.key === "Escape") kapat();
-    if (e.key === "ArrowLeft") goster(siradaki - 1);
-    if (e.key === "ArrowRight") goster(siradaki + 1);
+    if (e.key === "ArrowLeft") adim(-1);
+    if (e.key === "ArrowRight") adim(1);
   });
   let dokunX = null;
   buyutKutu.addEventListener("touchstart", (e) => { dokunX = e.touches[0].clientX; }, { passive: true });
   buyutKutu.addEventListener("touchend", (e) => {
     if (dokunX === null) return;
     const dx = e.changedTouches[0].clientX - dokunX;
-    if (Math.abs(dx) > 40) goster(siradaki + (dx < 0 ? 1 : -1));
+    if (Math.abs(dx) > 40) adim(dx < 0 ? 1 : -1);
     dokunX = null;
   });
 
