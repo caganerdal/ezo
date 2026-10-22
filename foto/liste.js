@@ -9,5 +9,10 @@ window.FOTOLAR = [
   "foto/sohbet-007.jpg",
   "foto/sohbet-008.jpg",
   "foto/sohbet-009.jpg",
-  "foto/sohbet-010.jpg"
+  "foto/sohbet-010.jpg",
+  "foto/sohbet-011.jpg",
+  "foto/sohbet-012.jpg",
+  "foto/sohbet-013.jpg",
+  "foto/sohbet-014.jpg",
+  "foto/sohbet-015.jpg"
 ];
