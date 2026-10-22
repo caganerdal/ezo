@@ -57,6 +57,12 @@
     </section>
 
     <section class="bolum">
+      <h2>Oyun köşesi</h2>
+      <p class="aciklama">Senin için birkaç küçük oyun</p>
+      <div id="oyun-listesi" class="oyun-listesi"></div>
+    </section>
+
+    <section class="bolum">
       <h2>Sana bir mektup</h2>
       <article class="mektup">
         <div id="mektup"></div>
@@ -77,10 +83,28 @@
     <button class="buyut-ok buyut-sonraki" type="button" aria-label="Sonraki">›</button>
   </div>
 
+  <div id="oyun" class="oyun-ekran" hidden>
+    <header class="oyun-ust">
+      <button class="oyun-kapat" type="button" aria-label="Oyundan çık">×</button>
+      <h3 class="oyun-baslik"></h3>
+      <div class="oyun-puanlar">
+        <div><small class="oyun-skor-adi">Skor</small><span class="oyun-skor">0</span></div>
+        <div><small>Rekor</small><span class="oyun-rekor">–</span></div>
+      </div>
+    </header>
+    <div class="oyun-sahne"></div>
+    <div class="oyun-son" hidden>
+      <p class="oyun-son-baslik"></p>
+      <p class="oyun-son-mesaj"></p>
+      <button class="oyun-tekrar kalp-dugme" type="button">Tekrar oyna</button>
+    </div>
+  </div>
+
   <button id="muzik-dugme" class="muzik-dugme" type="button" aria-label="Müziği aç/kapat" hidden>♪</button>
   <audio id="muzik" loop preload="auto"></audio>
 
   <script src="data.js"></script>
   <script src="script.js"></script>
+  <script src="oyunlar.js"></script>
 </body>
 </html>
