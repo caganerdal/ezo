@@ -18,11 +18,6 @@ window.SITE = {
   // Başlığın altındaki kısa cümle
   altBaslik: "İki yıl önce bugün tanıştık ve sen hayatımın en güzel tesadüfü oldun.",
 
-  // Albüm: fotoğrafları "foto" klasörüne 1.jpg, 2.jpg, 3.jpg ... diye sırayla koy.
-  // Buraya en fazla kaç fotoğraf olabileceğini yaz; olmayan numaralar görünmez.
-  fotoSayisi: 60,
-  fotoUzantisi: "jpg",
-
   // "Seni sevmemin sebepleri" kartları
   sebepler: [
     "Gülünce gözlerinin de gülmesi",

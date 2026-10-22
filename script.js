@@ -10,15 +10,18 @@
   document.title = `${S.isim} · Tanışmamızın 2. yılı`;
 
   // ---------- Albüm ----------
-  // foto/1.jpg, foto/2.jpg ... sırayla denenir; olmayanlar sessizce çıkarılır.
+  // Liste foto/liste.js'ten gelir (GitHub Action yükleme sonrası otomatik yazar).
   const album = $("#album");
-  let bekleyen = S.fotoSayisi;
+  const fotoListesi = window.FOTOLAR || [];
+  let bekleyen = fotoListesi.length;
   let yuklenen = 0;
   function fotoBitti(basarili) {
     if (basarili) yuklenen++;
     if (--bekleyen === 0 && yuklenen === 0) $("#album-bolum").hidden = true;
   }
-  for (let i = 1; i <= S.fotoSayisi; i++) {
+  if (!fotoListesi.length) $("#album-bolum").hidden = true;
+  fotoListesi.forEach((src, sira) => {
+    const i = sira + 1;
     const kart = document.createElement("button");
     kart.type = "button";
     kart.className = "foto gorun";
@@ -28,11 +31,11 @@
     img.decoding = "async";
     img.onload = () => fotoBitti(true);
     img.onerror = () => { kart.remove(); fotoBitti(false); };
-    img.src = `foto/${i}.${S.fotoUzantisi}`;
+    img.src = src;
     kart.appendChild(img);
     kart.addEventListener("click", () => buyut(img));
     album.appendChild(kart);
-  }
+  });
 
   // ---------- Fotoğraf büyütme ----------
   const buyutKutu = $("#buyut");
