@@ -181,13 +181,21 @@ h2 {
 }
 
 .hero h1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-family: var(--el);
   font-weight: 700;
-  font-size: clamp(5rem, 26vw, 10rem);
-  line-height: 1;
-  margin: 0.5rem 0;
+  font-size: clamp(4rem, 20vw, 7.5rem);
+  line-height: 0.95;
+  margin: 0.5rem 0 1rem;
   color: var(--gul);
   text-shadow: 0 0 40px rgba(232, 118, 138, 0.35);
+}
+.hero h1 .ve { font-size: 0.45em; color: var(--gul-acik); margin: 0.1em 0; }
+
+@media (min-width: 640px) {
+  .hero h1 { flex-direction: row; align-items: baseline; gap: 0.25em; }
 }
 
 .alt-baslik {

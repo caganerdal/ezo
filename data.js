@@ -3,11 +3,12 @@
 // ============================================================
 
 window.SITE = {
-  // Sevgilinin adı (başlıkta görünür)
+  // Başlıkta "Ezgi & Çağan" diye görünür; sekme adı "Ezgi&Çağan" olur
   isim: "Ezgi",
+  seninIsmin: "Çağan",
 
-  // Senin adın (mektubun altına imza olarak yazılır)
-  imza: "Seni çok seven ben",
+  // Mektubun altındaki imza
+  imza: "Yeşil Gözlün",
 
   // Tanıştığınız an (YYYY-AA-GGTSS:DD). Sayaç buradan başlar.
   tanismaTarihi: "2024-10-23T00:00",
