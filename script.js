@@ -19,10 +19,11 @@
   const kareSayisi = Math.min(S.albumdeGorunen || 12, fotoListesi.length);
   let siradakiFoto = 0;
 
-  function sonrakiFoto() {
+  // atla: o an ekranda olan fotoğraflar, aynı fotoğraf iki karede görünmesin
+  function sonrakiFoto(atla = new Set()) {
     for (let k = 0; k < fotoListesi.length; k++) {
       const i = siradakiFoto++ % fotoListesi.length;
-      if (!bozuk.has(i)) return i;
+      if (!bozuk.has(i) && !atla.has(i)) return i;
     }
     return -1;
   }
@@ -32,7 +33,9 @@
     const img = new Image();
     img.alt = "";
     img.decoding = "async";
+    kare.dataset.bekleyen = i;
     img.onload = () => {
+      delete kare.dataset.bekleyen;
       const eskiler = [...cerceve.querySelectorAll("img")];
       cerceve.appendChild(img);
       void img.offsetWidth;
@@ -41,6 +44,7 @@
       setTimeout(() => eskiler.forEach((e) => e.remove()), 1000);
     };
     img.onerror = () => {
+      delete kare.dataset.bekleyen;
       bozuk.add(i);
       const yeni = sonrakiFoto();
       if (yeni >= 0) fotoKoy(kare, yeni);
@@ -71,7 +75,12 @@
     setInterval(() => {
       if (!albumGorunur || document.hidden || !buyutKutu.hidden) return;
       const kareler = album.querySelectorAll(".foto");
-      const i = sonrakiFoto();
+      const gosterilen = new Set();
+      kareler.forEach((k) => {
+        if (k.dataset.foto) gosterilen.add(+k.dataset.foto);
+        if (k.dataset.bekleyen) gosterilen.add(+k.dataset.bekleyen);
+      });
+      const i = sonrakiFoto(gosterilen);
       if (i < 0 || !kareler.length) return;
       fotoKoy(kareler[kareSirasi[tur++ % kareSirasi.length] % kareler.length], i);
     }, (S.degisimSaniyesi || 3) * 1000);
