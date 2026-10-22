@@ -51,12 +51,6 @@
     </section>
 
     <section class="bolum">
-      <h2>Seni sevmemin sebepleri</h2>
-      <p class="aciklama">Kartlara dokun</p>
-      <div id="sebepler" class="sebepler"></div>
-    </section>
-
-    <section class="bolum">
       <h2>Oyun köşesi</h2>
       <p class="aciklama">Senin için birkaç küçük oyun</p>
       <div id="oyun-listesi" class="oyun-listesi"></div>
@@ -104,7 +98,10 @@
   <audio id="muzik" loop preload="auto"></audio>
 
   <script src="data.js"></script>
-  <script src="foto/liste.js"></script>
+  <script>
+    // Fotoğraf listesi sık değiştiği için tarayıcı önbelleğindeki eski sürüm kullanılmasın
+    document.write('<script src="foto/liste.js?' + Date.now() + '"><\/script>');
+  </script>
   <script src="script.js"></script>
   <script src="oyunlar.js"></script>
 </body>

@@ -4,7 +4,7 @@ Tanışmamızın 2. yıl dönümü için hazırlanmış küçük bir site.
 
 ## Nasıl kişiselleştirilir?
 
-Tüm yazılar `data.js` dosyasında: isim, tanışma tarihi, sebepler, mektup.
+Tüm yazılar `data.js` dosyasında: isim, tanışma tarihi, mektup.
 
 - **Fotoğraflar:** iPhone'dan HEIC ya da JPG, adını değiştirmeden `foto/` klasörüne yükle.
   GitHub Action (`.github/workflows/fotolar.yml`) bir dakika içinde hepsini küçük JPG'ye çevirir

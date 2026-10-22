@@ -129,26 +129,6 @@
     dokunX = null;
   });
 
-  // ---------- Sebepler ----------
-  const sebepler = $("#sebepler");
-  S.sebepler.forEach((metin, i) => {
-    const kart = document.createElement("button");
-    kart.type = "button";
-    kart.className = "kart gorun";
-    kart.setAttribute("aria-label", `Sebep ${i + 1}`);
-    kart.innerHTML = `
-      <div class="kart-ic">
-        <div class="kart-yuz kart-on">${i + 1}</div>
-        <div class="kart-yuz kart-arka"></div>
-      </div>`;
-    kart.querySelector(".kart-arka").textContent = metin;
-    kart.addEventListener("click", (e) => {
-      kart.classList.toggle("dondu");
-      if (kart.classList.contains("dondu")) patlat(e.clientX, e.clientY, 8);
-    });
-    sebepler.appendChild(kart);
-  });
-
   // ---------- Mektup ----------
   const mektup = $("#mektup");
   S.mektup.forEach((satir) => {
